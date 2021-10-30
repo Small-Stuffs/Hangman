@@ -1,9 +1,115 @@
+import Home from "./home.js"
+import { sound } from '../../js/data/sound.js'
+
+
 const Game = (()=> {
+  const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  const words = ['apple', 'ball']
+
+  let chosenWord
+  let guessingWord
+  let lives
+  let guesses
+
+  const hangman = document.querySelector('.hangman')
   const init = () => {
+    const chosenWord = chooseWord()
+    console.log(chosenWord)
+    guessingWord = Array(chosenWord.length).fill('_') //Guessing word 
+    guesses = []
+    lives = 7
+    // Showing Screen
     render()
+    listeners()
   }
 
-  const
+  const render = ()=> {
+    let markup = `
+      <p class= "hangman__stats">Lives: 
+        <span class = "hangman__lives"> ${lives}</span>
+      </p>
+      <h1 class= "hangman__title">Hangman</h1>
+      <canvas class "hangman__board" height="155px"></canvas>
+      <div class = "hangman__word"> ${guessingWord.join('')}</div>
+      <p class ="hangman__instructions">Pick a Letter Below to guess the whole word</p>
+
+      <ul class = "hangman__letters">
+      ${createLetters()}
+      </ul>
+      <button class ="button hangman__trigger">Main Menu</button>
+      `
+      hangman.innerHTML = markup
+  }
+
+  const listeners = () =>{
+    hangman.addEventListener('click', e => {
+      // if(e.target.mathes('.hangman__letter')) {
+      //   sound.click.play()
+      //   check(e.target.innerHTML)
+      // }
+
+      if(e.target.matches('.hangman__trigger')){
+        sound.click.play()
+        Home.init()
+      }
+    })
+  }
+// Game Logic
+
+  const letterTaken = (letter) => {
+    return guesses.includes(letter)
+  }
+  const check = (guess)=> {
+    if(letterTaken()) return
+    guesses.push(guess)
+
+
+    // check of the guess exist in chosenword
+    if (chosenWord.includes(guess)) {
+      // update guessingword
+      updateGuessingWord(guess)
+      console.log(guessingWord)
+    } 
+    else {
+      lives--
+      // render boa 
+    }
+
+  }
+
+
+  const updateGuessingWord = (letter)=> {
+
+    chosenWord.split('').forEach((elem, index)=> {
+      if(elem === letter) {
+        guessingWord[index] = elem
+      }
+    })
+
+  }
+
+
+
+  const createLetters = ()=>{
+    let markup = ``
+    letters.forEach(letter => {
+
+      markup += ` 
+      <li class = "hangman__letter">${letter}</li>
+      `
+
+    })
+
+    return markup
+  }
+  
+  
+  const chooseWord = ()=> {
+    let randomNum = Math.floor(Math.random() * words.length)
+
+    return words[randomNum]
+  }
+
 
   return {
     init
