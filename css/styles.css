@@ -1,0 +1,113 @@
+:root {
+  --main-bg-color: #1A1A1A;
+  --main-font-color: white;
+  --light-white: #eee;
+  --light-black: #111;
+  --light-yellow: rgb(243, 168, 47);
+  --font-body-stack : Arial, Helvetica, sans-serif;
+  --font-heading-stack: Impact, Charcoal, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #ffffff;
+}
+.container {
+  max-width: 768px;
+  margin: 2rem auto;
+}
+.hangman {
+  padding: 20px;
+  height: 680px;
+  background-color: var(--main-bg-color);
+}
+.hangman__stats {
+  color: lightyellow;
+  font-family: var(--font-body-stack);
+}
+.hangman__title {
+  font-family: var(--font-heading-stack);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--light-yellow);
+  font-size: 3rem;
+}
+.hangman__board {
+  border: 2px dashed white;
+  display: block;
+  margin: 0 auto;
+}
+.hangman__word {
+  color: var(--main-font-color);
+  font-size: 2.4rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  letter-spacing: 0.6rem;
+}
+.hangman__instructions {
+  font-family: var(--font-body-stack);
+  text-align: center;
+  color: var(--light-yellow);
+  font-style: italic;
+}
+.hangman__letters {
+  list-style-type: none;
+  color: var(--main-font-color);
+  max-width: 580px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.hangman__letter {
+  text-transform: uppercase;
+  font-family: var(--font-body-stack);
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  margin: 1rem 1px 0 1px;
+  background: var(--light-white);
+  color: var(--light-black);
+  border: 3px solid var(--main-bg-color);
+  font-size: 1.2rem;
+}
+.hangman__letter--active {
+  background-color: #555;
+}
+.hangman__letter:hover {
+  cursor: default;
+  border: 3px solid var(--light-yellow);
+}
+.button {
+  display: block;
+  margin: 1.2rem auto;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--light-yellow);
+  border: 0;
+  font-weight: bold;
+  color: var(--light-black);
+}
+.button:focus {
+  outline: 0;
+  box-shadow: 0 0 10px rgb(255, 170, 0);
+}
+
+/* instructions screen */
+.how {
+  line-height: 1.7;
+  padding: 1rem 1.8rem;
+  font-family: var(--font-body-stack);
+  color: var(--light-white);
+  text-align: center;
+}
+
+/* end screen */
+.result {
+  padding: 1rem 0;
+  font-family: var(--font-body-stack);
+  font-size: 1.2rem;
+  color: var(--light-white);
+  text-align: center;
+}
