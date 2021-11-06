@@ -13,7 +13,7 @@ const Game = (()=> {
 
   const hangman = document.querySelector('.hangman')
   const init = () => {
-    const chosenWord = chooseWord()
+    chosenWord = chooseWord()
     console.log(chosenWord)
     guessingWord = Array(chosenWord.length).fill('_') //Guessing word 
     guesses = []
@@ -43,10 +43,10 @@ const Game = (()=> {
 
   const listeners = () =>{
     hangman.addEventListener('click', e => {
-      // if(e.target.mathes('.hangman__letter')) {
-      //   sound.click.play()
-      //   check(e.target.innerHTML)
-      // }
+      if(e.target.matches('.hangman__letter')) {
+        sound.click.play()
+        check(e.target.innerHTML)
+      }
 
       if(e.target.matches('.hangman__trigger')){
         sound.click.play()
@@ -60,7 +60,7 @@ const Game = (()=> {
     return guesses.includes(letter)
   }
   const check = (guess)=> {
-    if(letterTaken()) return
+    if(letterTaken(guess)) return
     guesses.push(guess)
 
 
