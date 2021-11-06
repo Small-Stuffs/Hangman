@@ -72,12 +72,19 @@ const Game = (()=> {
     } 
     else {
       lives--
-      // render boa 
+      // render board
+      updateGame()
     }
 
   }
 
+  const updateGame = ()=> {
+    document.querySelector('.hangman__lives').innerHTML = lives
+    document.querySelector('.hangman__word').innerHTML = guessingWord.join('')
+    document.querySelector('.hangman__letters').innerHTML = createLetters()
 
+
+  }
   const updateGuessingWord = (letter)=> {
 
     chosenWord.split('').forEach((elem, index)=> {
@@ -93,9 +100,10 @@ const Game = (()=> {
   const createLetters = ()=>{
     let markup = ``
     letters.forEach(letter => {
+      const isActive = letterTaken(letter) ? 'hangman__letter--active':''
 
       markup += ` 
-      <li class = "hangman__letter">${letter}</li>
+      <li class = "hangman__letter ${isActive}">${letter}</li>
       `
 
     })
