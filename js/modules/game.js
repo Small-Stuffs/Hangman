@@ -69,13 +69,14 @@ const Game = (()=> {
       // update guessingword
       updateGuessingWord(guess)
       console.log(guessingWord)
+      
     } 
     else {
       lives--
       // render board
-      updateGame()
+      
     }
-
+    updateGame()
   }
 
   const updateGame = ()=> {
@@ -89,7 +90,7 @@ const Game = (()=> {
 
     chosenWord.split('').forEach((elem, index)=> {
       if(elem === letter) {
-        guessingWord[index] = elem
+        guessingWord[index--] = elem
       }
     })
 
