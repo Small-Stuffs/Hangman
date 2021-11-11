@@ -1,4 +1,5 @@
 import Home from "./home.js"
+import End from "./endgame.js"
 import { sound } from '../../js/data/sound.js'
 
 
@@ -77,6 +78,37 @@ const Game = (()=> {
       
     }
     updateGame()
+    gameOver()
+  }
+//////////////
+  // if won
+  const won = ()=> guessingWord.join('') === chosenWord
+  //if lost
+  const lost = ()=> lives <=0
+//////////////
+
+  const gameOver = ()=> {
+    // if won
+    if(won()){
+      console.log('win')
+      sound.win.play()
+      End.setState({
+        chosenWord:chosenWord,
+        result: win
+      })
+    }
+    // if lose 
+    if (lost()) {
+      console.log('lose')
+      sound.lose.play()
+      End.setState({
+        chosenWord:chosenWord,
+        result: "lose"
+
+      })
+    }
+
+
   }
 
   const updateGame = ()=> {
