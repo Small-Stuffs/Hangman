@@ -15,8 +15,8 @@ const End = (()=>{
 
   const render = ()=> {
     let markup = `
-      <h1 class ="hangman__title">GAME OVER</h1>
-      <p class = "result" >You ${state.winOrLose} ! <br>
+      <h1 class ="hangman__title">GAME OVER</h1> <br><br>
+      <p class = "hangman__title" >You ${state.winOrLose.toUpperCase()}! <br><br>
         The word is ${state.chosenWord}
       </p>
       <button class = "button hangman__trigger">Main Menu</button>

@@ -75,6 +75,7 @@ const Game = (()=> {
     else {
       lives--
       // render board
+
       
     }
     updateGame()
@@ -94,7 +95,7 @@ const Game = (()=> {
       sound.win.play()
       End.setState({
         chosenWord:chosenWord,
-        result: win
+        result: "win"
       })
     }
     // if lose 
